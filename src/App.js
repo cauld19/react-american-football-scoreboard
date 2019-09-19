@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     let timeout = null;
-    if (seconds <= 59) {
+    if (seconds <= 59.99) {
       timeout = setTimeout(() => {
         setSeconds(seconds => seconds + 1);
       }, 1000);
