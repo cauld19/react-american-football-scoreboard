@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -8,6 +8,30 @@ function App() {
 
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
+
+  const [minutes, setMinutes] = useState(0);
+
+  useEffect(() => {
+    let timeout = null;
+    if (minutes <= 2.99) {
+      timeout = setTimeout(() => {
+        setMinutes(minutes => minutes + 1);
+      }, 60000);
+    } else timeout = setMinutes(0); 
+    return () => clearTimeout(timeout);
+  }, [minutes]);
+
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    let timeout = null;
+    if (seconds <= 59) {
+      timeout = setTimeout(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    } else timeout = setSeconds(0); 
+    return () => clearTimeout(timeout);
+  }, [seconds]);
 
 
 
@@ -22,7 +46,7 @@ function App() {
 
             <div className="home__score">{homeScore}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">{minutes}:{seconds}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{awayScore}</div>
