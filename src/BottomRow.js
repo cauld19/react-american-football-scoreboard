@@ -27,17 +27,21 @@ const BottomRow = () => {
   if ( quarter === 1 ) {
     const timer = setTimeout(() => {
       setQuarter( quarter + 1);
-    }, 180000);
+    }, 2000);
   } else if (quarter === 2 ) {
     const timer = setTimeout(() => {
       setQuarter( quarter + 1);
-    }, 180000);
+    }, 2000);
   } else if (quarter === 3 ) {
     const timer = setTimeout(() => {
       setQuarter( quarter + 1);
-    }, 180000);
+    }, 2000);
+  } else if (quarter === 4 ) {
+    const timer = setTimeout(() => {
+      setQuarter( quarter + 1);
+    }, 2000);
   } else {
-    setQuarter(4);
+    setQuarter(1);
   } 
   return () => clearTimeout(timer);
 }, [quarter]);
